@@ -6,6 +6,12 @@
     margin-bottom: 40px;
 }
 
+@media (max-width: 600px) {
+    .display{
+        flex-direction: column;
+    }
+}
+
 .text-area{
     align-content: center;
     margin-left: auto;
@@ -67,6 +73,7 @@
     width: 60%;
     margin-left: 30px;
     margin-right: 30px;
+    margin-bottom: 10px;
 }
 
 .text-area-btn:hover{

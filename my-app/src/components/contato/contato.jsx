@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './contato.css';
+import emailjs from 'emailjs-com'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { userEmail } from '../login/login';
@@ -9,6 +10,24 @@ const apiUrl = 'https://localhost:7050/api/Messages';
 const Contato = () => {
     const [mensagem, setMensagem] = useState('');
     const [mensagensEnviadas, setMensagensEnviadas] = useState([]);
+    const [emailretorno, setEmailretorno] = useState([]);
+
+    const SendEmail = (e) => {
+        e.preventDefault();
+
+        var templateParams = {
+            emailretorno: emailretorno,
+            message: mensagem
+        };
+
+        emailjs.send('service_c4pruyg','template_uajx2ma',templateParams,'pjwMRWOxJHu_DVurz')
+        .then(function(response){
+            console.log('enviado ao email com sucesso!', response.status, response.text);
+        }, function(error){
+            console.log('erro ao enviar ao email', error);
+        })
+        console.log(templateParams);
+    }
 
     useEffect(() => {
         fetchMensagens();
@@ -33,6 +52,8 @@ const Contato = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        SendEmail(event);
         
         const dataHora = new Date().toISOString();
         const novaMensagem = { texto: mensagem, dataHora, email: userEmail };
@@ -54,6 +75,7 @@ const Contato = () => {
         }
 
         setMensagem('');
+        setEmailretorno('');
     };
 
     const handleDeleteMessage = async (id) => {
@@ -97,6 +119,13 @@ const Contato = () => {
             <div className="text-area">
                 <h3 className="text-area-title">Envie-nos uma mensagem</h3>
                 <form className="display-" onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        value={emailretorno}
+                        onChange={(e) => setEmailretorno(e.target.value)}
+                        placeholder="Digite o seu e-mail para retornarmos a mensagem"
+                        required
+                    />
                     <input
                         type="text"
                         value={mensagem}
