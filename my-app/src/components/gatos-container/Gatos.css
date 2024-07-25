@@ -1,0 +1,57 @@
+.gatos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 40px;
+    margin-left: 140px;
+    margin-bottom: 40px;
+    margin-right: 20px;
+}
+
+.gato-card {
+    width: 200px;
+    background-color: #90EE90;
+    border-radius: 10px;
+    border: 1.6px solid black;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0px 3px 10px #464646;
+    transition: transform 0.5s;
+}
+
+.gato-card:hover{
+    transform: scale(1.1);
+}
+
+.gato-img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1.6px solid black;
+}
+
+.gato-name {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.description-btn{
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 5px;
+    transition: color 0.5s ease;
+    background-color: #ade8ad;
+    border-radius: 5px;
+    border: 1.6px solid black;
+    box-shadow: 0px 2px 5px #464646;
+}
+
+.description-btn:hover{
+    color:green;
+}
+
+@media screen and (max-width: 600px) {
+    .gatos-container{
+        margin-left: 20px;
+        margin-right: 5px;
+    }
+}

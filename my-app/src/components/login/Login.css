@@ -1,0 +1,67 @@
+.login-section {
+    margin: 20px;
+    padding-left: 0px;
+    text-align: left;
+}
+
+@media (max-width: 850px) {
+    .login-section{
+        margin-left: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+    .login-section{
+        margin-left: 80px;
+    }
+}
+
+@media (max-width: 450px) {
+    .login-section{
+        margin-left: 20px;
+    }
+}
+
+.login-label {
+    color: #1396c1;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.login-instruction {
+    font-size: 0.8em;
+    
+}
+
+.login-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.login-input.error::placeholder {
+    color: red;
+    font-weight: bold;
+}
+
+.login-button {
+    display: block; 
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-top: 35px;
+    margin-bottom: 10px; 
+    background-color: #90EE90;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.toggle-password-icon {
+    cursor: pointer;
+    color: rgb(57, 57, 57);
+    margin-left: 5px;
+}

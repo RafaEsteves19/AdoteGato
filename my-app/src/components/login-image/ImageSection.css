@@ -1,0 +1,26 @@
+.image-section {
+    text-align: right;
+    margin: 30px;
+}
+
+.main-image {
+    position: absolute;
+    top: 110px;
+    right: 0;
+    width: 80%;
+    max-width: 450px;
+    height: auto;
+    pointer-events: none;
+}
+
+@media (max-width: 850px) {
+    .main-image{
+        opacity: 0;
+    }
+}
+
+@media (min-width: 1150px) {
+    .main-image{
+        max-width: 600px;
+    }
+}

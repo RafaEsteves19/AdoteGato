@@ -1,0 +1,45 @@
+.doacao-title-container {
+    background-color: #dafcd2;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.doacao {
+    align-items: center;
+    background-color: #dafcd2;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+    box-shadow: 0px 3px 10px #464646;
+}
+
+.img-container {
+    margin-right: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.doacao-img {
+    width: 28%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px #464646;
+}
+
+.txt-space{
+    margin-top: 7px;
+}
+
+.txt-space-end{
+    margin-top: 7px;
+    margin-bottom: 20px;
+}
+
+.link-style{
+    transition: color 0.3s ease;
+}
+
+.link-style:hover{
+    color:green;
+}
