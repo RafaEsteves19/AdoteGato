@@ -92,6 +92,7 @@
     max-width: 400px;
     word-wrap: break-word;
     margin-top: 25px;
+    margin-right: 10px;
 }
 
 .delete-button {
