@@ -4,8 +4,12 @@ import emailjs from 'emailjs-com'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { userEmail } from '../login/login';
+import { serviceID } from '../../config/config';
+import { templateID } from '../../config/config';
+import { userID } from '../../config/config';
 
-const apiUrl = 'https://localhost:7050/api/Messages';
+const isProduction = process.env.NODE_ENV === 'production';
+const apiUrl = isProduction ? process.env.REACT_APP_API_URL_PRODUCTION : process.env.REACT_APP_API_URL_LOCAL;   
 
 const Contato = () => {
     const [mensagem, setMensagem] = useState('');
@@ -20,7 +24,7 @@ const Contato = () => {
             message: mensagem
         };
 
-        emailjs.send('service_c4pruyg','template_uajx2ma',templateParams,'pjwMRWOxJHu_DVurz')
+        emailjs.send(serviceID,templateID,templateParams,userID)
         .then(function(response){
             console.log('enviado ao email com sucesso!', response.status, response.text);
         }, function(error){
@@ -35,7 +39,7 @@ const Contato = () => {
 
     const fetchMensagens = async () => {
         try {
-            const response = await fetch(apiUrl);
+            const response = await fetch(`${apiUrl}/Messages`);
             if (!response.ok) {
                 throw new Error('Erro ao buscar mensagens da API');
             }
@@ -59,7 +63,7 @@ const Contato = () => {
         const novaMensagem = { texto: mensagem, dataHora, email: userEmail };
 
         try {
-            const response = await fetch(apiUrl, {
+            const response = await fetch(`${apiUrl}/Messages`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,7 +84,7 @@ const Contato = () => {
 
     const handleDeleteMessage = async (id) => {
         try {
-            const response = await fetch(`${apiUrl}/${id}`, {
+            const response = await fetch(`${apiUrl}/Messages/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {

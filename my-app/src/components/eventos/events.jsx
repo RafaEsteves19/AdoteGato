@@ -8,6 +8,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 import GatoPreto from "../../images/gato-preto.jpg";
 
+const isProduction = process.env.NODE_ENV === 'production';
+const apiUrl = isProduction ? process.env.REACT_APP_API_URL_PRODUCTION : process.env.REACT_APP_API_URL_LOCAL; 
+
 const Events = () => {
     const events = [
         { id: 1, name: 'Nome do Evento 1', image: GatoPreto },
@@ -31,7 +34,7 @@ const Events = () => {
 
     const fetchComments = useCallback(async () => {
         try {
-            const response = await fetch('https://localhost:7050/api/Comments');
+            const response = await fetch(`${apiUrl}/Comments`);
             if (!response.ok) {
                 throw new Error('Falha ao carregar os comentários.');
             }
@@ -46,7 +49,7 @@ const Events = () => {
         try {
             const newCommentId = 0;
             const dataHora = new Date().toISOString();
-            const response = await fetch('https://localhost:7050/api/Comments', {
+            const response = await fetch(`${apiUrl}/Comments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +68,7 @@ const Events = () => {
 
     const handleDeleteComment = useCallback(async (commentId) => {
         try {
-            const response = await fetch(`https://localhost:7050/api/Comments/${commentId}`, {
+            const response = await fetch(`${apiUrl}/Comments/${commentId}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {

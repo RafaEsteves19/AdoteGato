@@ -1,0 +1,16 @@
+Lembre-se de criar uma file config.jsx neste folder com o código abaixo
+modificando os IDs corretamente.
+
+const serviceID = 'seu serviceID do emailjs'
+const templateID = 'seu templateID do emailjs'
+const userID = 'seu userID do emailjs'
+
+export { serviceID };
+export { templateID };
+export { userID };
+
+Também não se esqueça de criar um .env na raiz do projeto
+e definir a URL local e a URL de produção.
+
+REACT_APP_API_URL_LOCAL=https://localhost:(numero do localhost)/api
+REACT_APP_API_URL_PRODUCTION=https://(seu-link-backend-de-produção)/api
