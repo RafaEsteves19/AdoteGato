@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Environment variables
-.env
+#.env
 
 # Email.js variables
-src/config/config.jsx
+#src/config/config.jsx

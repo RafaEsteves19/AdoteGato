@@ -24,8 +24,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "json-server --watch db.json --port 5050",
-    "build": "REACT_APP_NODE_ENV=production react-scripts build",
+    "build": "cross-env REACT_APP_NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -48,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "json-server": "^1.0.0-beta.1"
   }
 }
