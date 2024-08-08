@@ -5,6 +5,9 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 let email = '';
 
+const isProduction = process.env.NODE_ENV === 'production';
+const apiUrl = isProduction ? process.env.REACT_APP_API_URL_PRODUCTION : process.env.REACT_APP_API_URL_LOCAL;  
+
 const Login = ({ onLoginSuccess }) => {
     const [senha, setSenha] = useState('');
     const [error, setError] = useState({ email: false, senha: false });
@@ -17,7 +20,7 @@ const Login = ({ onLoginSuccess }) => {
 
     const fetchMensagens = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/Messages');
+            const response = await fetch(`${apiUrl}/Messages`);
             if (!response.ok) {
                 throw new Error('Erro ao obter mensagens na API');
             }
@@ -63,7 +66,7 @@ const Login = ({ onLoginSuccess }) => {
 
             if (mensagensComEmailVazio.length > 0) {
                 await Promise.all(mensagensComEmailVazio.map(async msg => {
-                    const deleteResponse = await fetch(`http://localhost:5000/api/Messages/${msg.id}`, {
+                    const deleteResponse = await fetch(`${apiUrl}/Messages/${msg.id}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
